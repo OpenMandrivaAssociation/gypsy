@@ -1,6 +1,6 @@
 Name:		gypsy
 Version:	0.8
-Release:	3
+Release:	4
 Summary:	A GPS multiplexing daemon
 
 Group:		System/Libraries
@@ -37,6 +37,7 @@ access GPS data from multiple GPS sources concurrently.
 Summary:	Development package for gypsy
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n	%{devname}
 Header files for development with gypsy.
@@ -84,4 +85,3 @@ autoreconf -fi
 
 %files docs
 %{_datadir}/gtk-doc/html/gypsy
-
