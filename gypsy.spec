@@ -35,7 +35,7 @@ access GPS data from multiple GPS sources concurrently.
 %define	devname	%mklibname -d %{name}
 %package -n	%{devname}
 Summary:	Development package for gypsy
-Group:		Development/C
+Group:		Books/Computer books
 Requires:	%{libname} = %{EVRD}
 Provides:	%{name}-devel = %{EVRD}
 
