@@ -8,6 +8,7 @@ Group:		System/Libraries
 License:	LGPLv2 and GPLv2
 URL:		http://gypsy.freedesktop.org/
 Source0:	http://gypsy.freedesktop.org/releases/%{name}-%{version}.tar.gz
+Patch0:		gypsy-0.8-no-werror-patch
 
 BuildRequires:	bluez-devel
 BuildRequires:	dbus-devel
@@ -52,13 +53,14 @@ This package contains developer documentation for %{name}.
 
 %prep
 %setup -q
+%patch0 -p1 -b .werror~
+find -name Makefile|xargs rm -f
+autoreconf -fi
 
 %build
-CFLAGS="%{optflags} -Wno-error" \
 %configure	--disable-static \
-		--enable-shared \
-		--enable-n810 \
-%make
+		--enable-shared
+%make V=2
 
 %install
 %makeinstall_std
@@ -78,6 +80,7 @@ CFLAGS="%{optflags} -Wno-error" \
 %dir %{_includedir}/gypsy
 %{_includedir}/gypsy/*.h
 %{_libdir}/libgypsy.so
+%{_libdir}/libgypsy.la
 
 %files docs
 %{_datadir}/gtk-doc/html/gypsy
