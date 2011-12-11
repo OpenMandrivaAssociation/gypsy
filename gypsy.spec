@@ -1,8 +1,11 @@
+%define	major	0
+%define	libname	%mklibname %{name} %{major}
+%define	devname	%mklibname -d %{name}
+
 Name:		gypsy
 Version:	0.8
-Release:	3
+Release:	4
 Summary:	A GPS multiplexing daemon
-
 Group:		System/Libraries
 # See LICENSE file for details
 License:	LGPLv2 and GPLv2
@@ -22,8 +25,6 @@ Requires:	dbus
 Gypsy is a GPS multiplexing daemon which allows multiple clients to 
 access GPS data from multiple GPS sources concurrently. 
 
-%define	major	0
-%define	libname	%mklibname %{name} %{major}
 %package -n	%{libname}
 Summary:	Libraries for gypsys
 Group:		System/Libraries
@@ -32,7 +33,6 @@ Group:		System/Libraries
 Gypsy is a GPS multiplexing daemon which allows multiple clients to 
 access GPS data from multiple GPS sources concurrently. 
 
-%define	devname	%mklibname -d %{name}
 %package -n	%{devname}
 Summary:	Development package for gypsy
 Group:		Development/C
@@ -54,17 +54,20 @@ This package contains developer documentation for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1 -b .werror~
+%apply_patches
+
 find -name Makefile|xargs rm -f
-autoreconf -fi
 
 %build
-%configure	--disable-static \
-		--enable-shared
+autoreconf -fi
+%configure	\
+	--disable-static \
+	--enable-shared
 %make V=2
 
 %install
 %makeinstall_std
+find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %doc AUTHORS LICENSE
@@ -73,15 +76,14 @@ autoreconf -fi
 %{_libexecdir}/gypsy-daemon
 
 %files -n %{libname}
-%{_libdir}/libgypsy.so.%{major}
-%{_libdir}/libgypsy.so.%{major}.0.0
+%{_libdir}/libgypsy.so.%{major}*
 
 %files -n %{devname}
 %{_libdir}/pkgconfig/gypsy.pc
 %dir %{_includedir}/gypsy
 %{_includedir}/gypsy/*.h
 %{_libdir}/libgypsy.so
-%{_libdir}/libgypsy.la
 
 %files docs
 %{_datadir}/gtk-doc/html/gypsy
+
