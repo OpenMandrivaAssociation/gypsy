@@ -1,0 +1,11 @@
+--- gypsy-0.8/configure.ac~	2010-06-09 16:58:03.000000000 +0200
++++ gypsy-0.8/configure.ac	2011-05-09 23:17:08.408021243 +0200
+@@ -54,7 +54,7 @@ AC_MSG_RESULT([$with_user])
+ AS_AC_EXPAND(LIBEXECDIR, $libexecdir)
+ AS_AC_EXPAND(DAEMON_USER, $with_user)
+ 
+-CFLAGS="$CFLAGS -g -Wall -Werror -Wno-format"
++CFLAGS="$CFLAGS -g -Wall -Wno-format"
+ 
+ GTK_DOC_CHECK([1.6])
+ # TODO: add --with-xsltproc argument to override PATH
