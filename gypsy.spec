@@ -4,7 +4,7 @@
 
 Name:		gypsy
 Version:	0.8
-Release:	4
+Release:	5
 Summary:	A GPS multiplexing daemon
 Group:		System/Libraries
 # See LICENSE file for details
@@ -13,10 +13,10 @@ URL:		http://gypsy.freedesktop.org/
 Source0:	http://gypsy.freedesktop.org/releases/%{name}-%{version}.tar.gz
 Patch0:		gypsy-0.8-no-werror-patch
 
-BuildRequires:	bluez-devel
-BuildRequires:	dbus-devel
-BuildRequires:	dbus-glib-devel
-BuildRequires:	glib2-devel
+BuildRequires:	pkgconfig(bluez)
+BuildRequires:	pkgconfig(dbus-1)
+BuildRequires:	pkgconfig(dbus-glib-1)
+BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	gtk-doc
 BuildRequires:	xsltproc
 Requires:	dbus
@@ -67,7 +67,6 @@ autoreconf -fi
 
 %install
 %makeinstall_std
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 
 %files
 %doc AUTHORS LICENSE
@@ -87,3 +86,63 @@ find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
 %files docs
 %{_datadir}/gtk-doc/html/gypsy
 
+
+
+%changelog
+* Sun Dec 11 2011 Matthew Dawkins <mattydaw@mandriva.org> 0.8-4
++ Revision: 740193
+- rebuild
+- removed .la files
+- spec clean up
+- use apply_patches
+
+* Tue May 10 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.8-3
++ Revision: 673125
+- fix some rpmlint errors
+- fix group
+- add a canonical -devel provides
+- fix build issues
+- imported package gypsy
+
+
+* Mon May 9 2011 Per Øyvind Karlsen peroyvind@mandriva.org> 0.8-3
+- imported and heavily adapted from fedora
+
+* Tue Sep 7 2010 Peter Robinson <pbrobinson@gmail.com> 0.8-2
+- Update to new source URL
+
+* Wed Jun 9 2010 Peter Robinson <pbrobinson@gmail.com> 0.8-1
+- New upstream 0.8 release
+
+* Thu Aug 06 2009 Bastien Nocera <bnocera@redhat.com> 0.7-1
+- Update to 0.7
+
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Fri Jun 19 2009 Bastien Nocera <bnocera@redhat.com> 0.6-9
+- Gypsy is supposed to run as a system service, as root
+
+* Wed Mar  4 2009 Peter Robinson <pbrobinson@gmail.com> 0.6-8
+- Move docs to noarch, some spec file updates
+
+* Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
+
+* Thu Dec 18 2008 Peter Robinson <pbrobinson@gmail.com> 0.6-6
+- Add gtk-doc build req
+
+* Sat Nov 22 2008 Peter Robinson <pbrobinson@gmail.com> 0.6-5
+- Rebuild
+
+* Thu Sep 11 2008 - Bastien Nocera <bnocera@redhat.com> 0.6-4
+- Rebuild
+
+* Mon May 15 2008 Peter Robinson <pbrobinson@gmail.com> 0.6-3
+- Further spec file cleanups
+
+* Mon Apr 28 2008 Peter Robinson <pbrobinson@gmail.com> 0.6-2
+- Some spec file cleanups
+
+* Sat Apr 26 2008 Peter Robinson <pbrobinson@gmail.com> 0.6-1
+- Initial package
