@@ -12,6 +12,7 @@ License:	LGPLv2 and GPLv2
 URL:		http://gypsy.freedesktop.org/
 Source0:	http://gypsy.freedesktop.org/releases/%{name}-%{version}.tar.gz
 Patch0:		gypsy-0.8-no-werror-patch
+Patch1:		gypsy-0.8-automake-1.13.patch
 
 BuildRequires:	pkgconfig(bluez)
 BuildRequires:	pkgconfig(dbus-1)
