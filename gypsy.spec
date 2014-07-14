@@ -5,7 +5,7 @@
 Summary:	A GPS multiplexing daemon
 Name:		gypsy
 Version:	0.8
-Release:	7
+Release:	8
 Group:		System/Libraries
 # See LICENSE file for details
 License:	LGPLv2 and GPLv2
