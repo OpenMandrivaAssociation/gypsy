@@ -4,17 +4,15 @@
 
 Summary:	A GPS multiplexing daemon
 Name:		gypsy
-Version:	0.8
-Release:	12
+Version:	0.9
+Release:	1
 Group:		System/Libraries
 # See LICENSE file for details
 License:	LGPLv2 and GPLv2
 Url:		http://gypsy.freedesktop.org/
 Source0:	http://gypsy.freedesktop.org/releases/%{name}-%{version}.tar.gz
 Patch0:		gypsy-0.8-no-werror-patch
-Patch1:		gypsy-0.8-automake-1.13.patch
 
-BuildRequires:	gtk-doc
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(bluez)
 BuildRequires:	pkgconfig(dbus-1)
@@ -71,6 +69,7 @@ autoreconf -fi
 %files
 %doc AUTHORS LICENSE
 %config %{_sysconfdir}/dbus-1/system.d/Gypsy.conf
+%config %{_sysconfdir}/gypsy.conf
 %{_datadir}/dbus-1/system-services/org.freedesktop.Gypsy.service
 %{_libexecdir}/gypsy-daemon
 
