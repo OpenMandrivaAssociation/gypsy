@@ -5,7 +5,7 @@
 Summary:	A GPS multiplexing daemon
 Name:		gypsy
 Version:	0.9
-Release:	3
+Release:	4
 Group:		System/Libraries
 # See LICENSE file for details
 License:	LGPLv2 and GPLv2
@@ -85,4 +85,3 @@ autoreconf -fi
 
 %files docs
 %{_datadir}/gtk-doc/html/gypsy
-
