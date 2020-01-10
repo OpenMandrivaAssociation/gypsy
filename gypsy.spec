@@ -54,7 +54,7 @@ This package contains developer documentation for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 find -name Makefile|xargs rm -f
 autoreconf -fi
 
