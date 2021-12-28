@@ -19,7 +19,7 @@ BuildRequires:	pkgconfig(dbus-1)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gudev-1.0)
-BuildRequires:	gtkdoc
+BuildRequires:	gtk-doc
 Requires:	dbus
 
 %description
