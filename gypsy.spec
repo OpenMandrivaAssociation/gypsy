@@ -9,7 +9,7 @@ Release:	7
 Group:		System/Libraries
 # See LICENSE file for details
 License:	LGPLv2 and GPLv2
-Url:		http://gypsy.freedesktop.org/
+Url:		https://gypsy.freedesktop.org/
 Source0:	http://gypsy.freedesktop.org/releases/%{name}-%{version}.tar.gz
 Patch0:		gypsy-0.8-no-werror-patch
 
